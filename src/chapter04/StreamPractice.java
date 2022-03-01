@@ -1,9 +1,11 @@
+package chapter04;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class StreamPractice {
     public static void main(String[] args) {
-//        getLowEnergyPersonNamesJava7(Character.people).forEach(System.out::println);
+//        getLowEnergyPersonNamesJava7(chapter04.Character.people).forEach(System.out::println);
         getLowEnergyPersonNamesJava8(Character.people).forEach(System.out::println);
     }
 
@@ -33,6 +35,8 @@ public class StreamPractice {
                 .filter(character -> character.getEnergy() < 60)
                 .sorted(Comparator.comparing(Character::getEnergy))
                 .map(Character::getName)
+                .limit(2)
+                .distinct()
                 .collect(Collectors.toList());
     }
 }
